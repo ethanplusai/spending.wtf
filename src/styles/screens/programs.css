@@ -1,0 +1,216 @@
+/**
+ * Programs Screen — spending.wtf
+ */
+
+/* Tab Switcher — pill buttons */
+.tab-switcher {
+  display: flex;
+  padding: 0 0 var(--spacing-md);
+  gap: var(--spacing-sm);
+}
+
+.tab-switch {
+  flex: 1;
+  padding: 10px var(--spacing-md);
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.tab-switch:hover {
+  background: var(--bg-surface-2);
+  color: var(--text-secondary);
+  border-color: var(--border-strong);
+}
+
+.tab-switch.active {
+  color: white;
+  background: var(--brand-red);
+  border-color: var(--brand-red);
+  box-shadow: none;
+}
+
+.tab-switch.active::after {
+  display: none;
+}
+
+/* Summary Card */
+.calendar-card {
+  padding: var(--spacing-lg);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.calendar-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.calendar-subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+}
+
+/* Total Cost Banner */
+.total-cost-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-surface-2);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-md);
+  border: 1px solid var(--border-color);
+}
+
+.total-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.total-amount {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+/* Warning Card */
+.warning-card {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: var(--warning-dim);
+  border: 1px solid rgba(251, 191, 36, 0.12);
+  border-radius: var(--radius-lg);
+}
+
+.warning-content {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.warning-icon {
+  color: var(--warning);
+  flex-shrink: 0;
+}
+
+.warning-text {
+  flex: 1;
+}
+
+.warning-text strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.warning-text p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Program Rows */
+.bills-card {
+  padding: 0;
+}
+
+.bill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px var(--spacing-lg);
+  transition: background-color var(--transition-fast);
+}
+
+.bill-row:hover {
+  background: var(--bg-hover);
+}
+
+.bill-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.bill-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface-2);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.bill-icon.income {
+  background: var(--positive);
+  color: white;
+  border-color: transparent;
+}
+
+.bill-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.bill-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--text-primary);
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bill-date {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.bill-amount-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.bill-amount {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.bill-amount.income {
+  color: var(--positive);
+}

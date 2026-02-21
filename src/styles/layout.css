@@ -1,0 +1,108 @@
+/**
+ * App Shell & Responsive Layout — spending.wtf
+ */
+
+/* App Shell */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Content Container — centered, constrained */
+.content-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 var(--spacing-md);
+}
+
+/* Screen structure */
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  animation: fadeIn var(--transition-slow) ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Screen Header */
+.screen-header {
+  padding: var(--spacing-lg) 0 var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.header-date {
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.header-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* Screen Content */
+.screen-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: var(--spacing-3xl);
+}
+
+/* Mobile: extra bottom padding for tab bar */
+@media (max-width: 767px) {
+  .screen-content {
+    padding-bottom: calc(var(--tabbar-height) + var(--spacing-2xl) + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Tablet+ */
+@media (min-width: 768px) {
+  .content-container {
+    padding: 0 var(--spacing-lg);
+  }
+
+  .screen-header {
+    padding-top: var(--spacing-xl);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .content-container {
+    max-width: var(--content-max-wide);
+    padding: 0 var(--spacing-xl);
+  }
+}
+
+/* Border Utilities */
+.border-t {
+  border-top: 1px solid var(--border-color);
+}
+
+.border-b {
+  border-bottom: 1px solid var(--border-color);
+}

@@ -1,0 +1,22 @@
+/**
+ * spending.wtf — Master Stylesheet
+ * Import order matters: tokens first, then resets, then components
+ */
+
+@import './tokens.css';
+@import './reset.css';
+@import './layout.css';
+@import './cards.css';
+@import './buttons.css';
+@import './sections.css';
+@import './charts.css';
+@import './navbar.css';
+@import './tabbar.css';
+@import './screens/dashboard.css';
+@import './screens/programs.css';
+@import './screens/spending.css';
+@import './screens/debt.css';
+@import './screens/menu.css';
+@import './screens/subscreens.css';
+@import './screens/search.css';
+@import './screens/journey.css';

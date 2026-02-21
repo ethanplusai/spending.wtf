@@ -1,0 +1,22 @@
+/**
+ * Card System — spending.wtf
+ * Layered dark surfaces with subtle glow
+ */
+
+.card {
+  background: var(--bg-surface-1);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: border-color var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--border-strong);
+}
+
+/* Card within a card / elevated */
+.card .card {
+  background: var(--bg-surface-2);
+}

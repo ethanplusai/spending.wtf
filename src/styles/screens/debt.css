@@ -1,0 +1,361 @@
+/**
+ * Debt Screen — spending.wtf
+ */
+
+/* Debt Counter Card */
+.debt-counter-card {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Removed: red radial glow */
+
+.debt-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  position: relative;
+}
+
+.debt-amount {
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  color: var(--negative);
+  font-family: var(--font-heading);
+  letter-spacing: -0.5px;
+  position: relative;
+  line-height: 1.2;
+}
+
+.debt-live-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--spacing-md);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-weight: 500;
+  position: relative;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--negative);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.debt-source {
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  position: relative;
+}
+
+/* Debt Chart */
+.debt-chart {
+  margin-top: var(--spacing-lg);
+  position: relative;
+}
+
+.debt-chart.expanded {
+  padding: var(--spacing-md);
+  background: var(--bg-surface-2);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-lg);
+}
+
+.debt-history-chart {
+  width: 100%;
+  height: 75px;
+  transition: height var(--transition-slow);
+}
+
+.debt-chart.expanded .debt-history-chart {
+  height: 140px;
+}
+
+/* Chart Time Selector */
+.chart-time-selector {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: var(--spacing-md);
+}
+
+.time-btn {
+  padding: 4px 12px;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  letter-spacing: 0.02em;
+}
+
+.time-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--text-secondary);
+}
+
+.time-btn.active {
+  background: var(--brand-red);
+  border-color: var(--brand-red);
+  color: white;
+}
+
+.debt-counter-card .time-btn {
+  background: var(--bg-surface-2);
+  border-color: var(--border-color);
+}
+
+.debt-counter-card .time-btn.active {
+  background: var(--brand-red);
+  border-color: var(--brand-red);
+  color: white;
+}
+
+/* Growth Stats */
+.growth-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-2xl);
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  position: relative;
+}
+
+.growth-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.growth-value {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.growth-value.negative {
+  color: var(--negative);
+}
+
+.growth-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* Metric Selector */
+.metric-selector {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg) 0 var(--spacing-sm);
+}
+
+.metric-btn {
+  flex: 1;
+  padding: 10px;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.metric-btn:hover {
+  background: var(--bg-surface-2);
+  color: var(--text-secondary);
+  border-color: var(--border-strong);
+}
+
+.metric-btn.active {
+  background: var(--brand-red);
+  border-color: var(--brand-red);
+  color: white;
+  box-shadow: none;
+}
+
+/* Metrics Card */
+.metrics-card {
+  padding: 0;
+}
+
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px var(--spacing-lg);
+  transition: background-color var(--transition-fast);
+}
+
+.metric-row:hover {
+  background: var(--bg-hover);
+}
+
+.metric-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.metric-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+}
+
+.metric-icon.total {
+  background: var(--negative-dim);
+  color: var(--negative);
+}
+
+.metric-icon.public {
+  background: var(--info-dim);
+  color: var(--info);
+}
+
+.metric-icon.intra {
+  background: rgba(115, 115, 115, 0.12);
+  color: var(--text-muted);
+}
+
+.metric-icon.gdp {
+  background: var(--warning-dim);
+  color: var(--warning);
+}
+
+.metric-icon.citizen {
+  background: var(--info-dim);
+  color: var(--info);
+}
+
+.metric-icon.taxpayer {
+  background: var(--warning-dim);
+  color: var(--warning);
+}
+
+.metric-icon.household {
+  background: var(--positive-dim);
+  color: var(--positive);
+}
+
+.metric-icon.baby {
+  background: var(--negative-dim);
+  color: var(--negative);
+}
+
+.metric-icon.interest,
+.metric-icon.interest-year,
+.metric-icon.interest-day,
+.metric-icon.interest-hour {
+  background: var(--negative-dim);
+  color: var(--negative);
+}
+
+.metric-icon.interest-percent {
+  background: var(--warning-dim);
+  color: var(--warning);
+}
+
+.metric-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.metric-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.metric-desc {
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+}
+
+.metric-value {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-value.negative {
+  color: var(--negative);
+}
+
+.metric-value.warning {
+  color: var(--warning);
+}
+
+/* Context Card */
+.context-card {
+  padding: var(--spacing-lg);
+}
+
+.context-text {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.context-text strong {
+  font-family: var(--font-heading);
+  color: var(--negative);
+  font-weight: 400;
+}
+
+/* Interest Trend Card */
+.interest-trend-card {
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+}
+
+.trend-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.interest-trend-chart {
+  width: 100%;
+  height: 65px;
+}
+
+.trend-note {
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: var(--spacing-sm);
+}

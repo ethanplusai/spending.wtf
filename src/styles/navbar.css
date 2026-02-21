@@ -1,0 +1,90 @@
+/**
+ * Desktop Top Navbar — spending.wtf
+ * Solid dark nav, hidden on mobile
+ */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  padding: 0 var(--spacing-xl);
+  background: var(--bg-body);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Logo */
+.navbar-logo {
+  font-size: var(--text-xl);
+  font-weight: 400;
+  font-family: var(--font-heading);
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+  user-select: none;
+  cursor: default;
+}
+
+.navbar-logo .logo-accent {
+  color: var(--brand-red);
+}
+
+/* Nav Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.navbar-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  letter-spacing: 0.01em;
+}
+
+.navbar-link:hover {
+  color: var(--text-secondary);
+  background: var(--bg-hover);
+}
+
+.navbar-link.active {
+  color: var(--text-primary);
+  background: none;
+}
+
+.navbar-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 1px;
+}
+
+.navbar-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Show navbar on tablet+ */
+@media (min-width: 768px) {
+  .navbar {
+    display: flex;
+  }
+}

@@ -1,0 +1,91 @@
+/**
+ * Design Tokens — spending.wtf
+ * NDS-inspired dark theme: true neutrals, institutional serif, premium red accent
+ */
+
+:root {
+  /* Brand Colors — refined red for deficit/negative data */
+  --brand-red: #dc2626;
+  --brand-red-dark: #b91c1c;
+  --brand-red-light: #ef4444;
+
+  /* Dark Surfaces — TRUE NEUTRAL (no purple/blue tints) */
+  --bg-body: #0a0a0a;
+  --bg-surface-0: #0f0f0f;
+  --bg-surface-1: #141414;
+  --bg-surface-2: #1a1a1a;
+  --bg-surface-3: #222222;
+  --bg-elevated: #2a2a2a;
+  --bg-hover: rgba(255, 255, 255, 0.03);
+  --bg-active: rgba(255, 255, 255, 0.05);
+
+  /* Text — warm whites, neutral grays */
+  --text-primary: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-muted: #737373;
+  --text-dim: #525252;
+
+  /* Borders — used for elevation instead of shadows */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --border-strong: rgba(255, 255, 255, 0.12);
+
+  /* Status Colors */
+  --positive: #10b981;
+  --positive-dim: rgba(16, 185, 129, 0.10);
+  --negative: #ef4444;
+  --negative-dim: rgba(239, 68, 68, 0.10);
+  --warning: #f59e0b;
+  --warning-dim: rgba(245, 158, 11, 0.10);
+  --info: #3b82f6;
+  --info-dim: rgba(59, 130, 246, 0.10);
+
+  /* Spacing — 4px base grid */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* Border Radius — institutional, not playful */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 8px;
+  --radius-2xl: 10px;
+  --radius-full: 9999px;
+
+  /* Shadows — minimal, border-first elevation */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif;
+  --font-heading: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
+
+  /* Font Sizes — larger minimum, proper hierarchy */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.8125rem;  /* 13px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.75rem;   /* 28px */
+  --text-3xl: 2.25rem;   /* 36px */
+  --text-4xl: 3rem;      /* 48px */
+
+  /* Layout */
+  --navbar-height: 56px;
+  --tabbar-height: 56px;
+  --content-max-width: 720px;
+  --content-max-wide: 1200px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
