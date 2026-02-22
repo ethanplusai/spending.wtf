@@ -183,7 +183,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
             Built on a Promise
           </h2>
 
-          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '60vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 
             {/* Phase 1: Body + Gold bar (0.06 → 0.44) */}
             {(() => {
@@ -246,7 +246,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
             August 15, 1971
           </div>
 
-          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '60vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 
             {/* Phase 1: Body + temporary quote (0.06 → 0.32) */}
             {(() => {
@@ -320,7 +320,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
             It Only Goes Up
           </h2>
 
-          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '60vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 
             {/* Phase 1: Body + Agency cards (0.06 → 0.40) */}
             {(() => {
@@ -412,7 +412,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
           </h2>
 
           {/* Phases container — all absolutely positioned for seamless crossfade */}
-          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '60vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 
             {/* Phase 1: Body + M2 chart + big stat (0.06 → 0.40) */}
             {(() => {
@@ -496,7 +496,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
             $1 Trillion
           </div>
 
-          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '60vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 
             {/* Phase 1: Body + Interest chart + stat cards (0.06 → 0.52) */}
             {(() => {
@@ -558,7 +558,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
             The Bill
           </h2>
 
-          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '60vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 
             {/* Phase 1: Three big numbers (0.06 → 0.48) */}
             {(() => {
@@ -644,7 +644,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
             This Has Happened Before
           </h2>
 
-          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', flex: 'none', height: '60vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 
             {/* Phase 1: Case cards (0.06 → 0.42) */}
             {(() => {
