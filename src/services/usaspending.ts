@@ -207,7 +207,7 @@ export async function fetchStateDetail(fips: string, fy: number): Promise<StateD
 
 export async function searchAwards(
   query: string,
-  filters?: { awardType?: string; dateRange?: { start: string; end: string } }
+  filters?: { awardType?: string | string[]; dateRange?: { start: string; end: string } }
 ): Promise<AwardSearchResult[]> {
   try {
     const filterObj: Record<string, unknown> = {
@@ -216,7 +216,9 @@ export async function searchAwards(
 
     // Only include award_type_codes when a specific filter is chosen
     if (filters?.awardType) {
-      filterObj.award_type_codes = [filters.awardType];
+      filterObj.award_type_codes = Array.isArray(filters.awardType)
+        ? filters.awardType
+        : [filters.awardType];
     }
 
     const body: Record<string, unknown> = {
@@ -232,7 +234,7 @@ export async function searchAwards(
         'Awarding Agency', 'Award Type',
       ],
       page: 1,
-      limit: 25,
+      limit: 50,
       sort: 'Award Amount',
       order: 'desc',
     };

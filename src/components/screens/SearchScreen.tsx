@@ -17,11 +17,11 @@ interface SearchScreenProps {
 
 type AwardFilter = 'all' | 'contracts' | 'grants' | 'loans';
 
-const FILTER_MAP: Record<AwardFilter, string | undefined> = {
+const FILTER_MAP: Record<AwardFilter, string[] | undefined> = {
   all: undefined,
-  contracts: 'A',
-  grants: '02',
-  loans: '07',
+  contracts: ['A', 'B', 'C', 'D'],
+  grants: ['02', '03', '04', '05', '06', '10', '11'],
+  loans: ['07', '08'],
 };
 
 const SUGGESTIONS = [
