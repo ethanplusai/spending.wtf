@@ -295,3 +295,123 @@
     display: none;
   }
 }
+
+/* ============================================
+   Live Debt Counter (Dashboard compact)
+   ============================================ */
+
+.dash-debt-card {
+  padding: var(--spacing-lg);
+  text-align: center;
+  margin-top: var(--spacing-md);
+}
+
+.dash-debt-label {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dash-debt-label .live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--negative);
+  animation: dashDotPulse 2s infinite;
+}
+
+@keyframes dashDotPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.dash-debt-amount {
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  color: var(--negative);
+  font-family: var(--font-heading);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-top: var(--spacing-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.dash-debt-sub {
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  margin-top: var(--spacing-sm);
+}
+
+/* ============================================
+   Explore Quick-Access Grid
+   ============================================ */
+
+.dash-explore-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.dash-explore-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg) var(--spacing-sm);
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.dash-explore-item:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-surface-2);
+  transform: translateY(-1px);
+}
+
+.dash-explore-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: rgba(220, 38, 38, 0.08);
+  color: var(--brand-red);
+}
+
+.dash-explore-label {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Mobile: 2 columns on very small screens */
+@media (max-width: 374px) {
+  .dash-explore-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: single row */
+@media (min-width: 1024px) {
+  .dash-explore-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .dash-debt-label .live-dot {
+    animation: none;
+    opacity: 1;
+  }
+}

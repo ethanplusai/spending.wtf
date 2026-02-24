@@ -5,9 +5,9 @@
 
 import { useState, useRef, useEffect } from 'react';
 import type { SubScreen, TabId } from '../../types';
-import { formatTrillions, formatBillions, formatCurrency } from '../../utils/format';
+import { formatTrillions, formatBillions, formatCurrency, formatDebtLive } from '../../utils/format';
 import { useApi } from '../../hooks/useApi';
-import { fetchMonthlyBudgetData } from '../../services/treasuryApi';
+import { fetchMonthlyBudgetData, fetchCurrentDebt } from '../../services/treasuryApi';
 import { smoothPath, smoothAreaPath } from '../../utils/chart';
 import type { Point } from '../../utils/chart';
 import { LiveTicker } from '../charts/LiveTicker';
@@ -33,6 +33,27 @@ export function DashboardScreen({ data: fallbackData, onNavigate, onTabChange }:
   const [selectedFY, setSelectedFY] = useState(2025);
   const [activeCard, setActiveCard] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Live debt counter
+  const [liveDebt, setLiveDebt] = useState(36.22e12);
+  const [debtLoading, setDebtLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadDebt() {
+      setDebtLoading(true);
+      const data = await fetchCurrentDebt();
+      if (data) setLiveDebt(data.totalDebt);
+      setDebtLoading(false);
+    }
+    loadDebt();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLiveDebt(prev => prev + 95000);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const { data: apiData } = useApi(
     () => fetchMonthlyBudgetData(selectedFY),
@@ -199,6 +220,23 @@ export function DashboardScreen({ data: fallbackData, onNavigate, onTabChange }:
           ))}
         </div>
 
+        {/* Live National Debt */}
+        <div
+          className="card dash-debt-card clickable"
+          onClick={() => onTabChange?.('transactions')}
+        >
+          <div className="dash-debt-label">
+            National Debt
+            <span className="live-dot" />
+          </div>
+          <div className="dash-debt-amount">
+            {debtLoading ? 'Loading...' : `$${formatDebtLive(liveDebt)}`}
+          </div>
+          <div className="dash-debt-sub">
+            +$95,000/sec &middot; Tap for details
+          </div>
+        </div>
+
         {/* Journey CTA */}
         <div className="journey-cta-banner clickable" onClick={() => onNavigate?.('journey')}>
           <div className="journey-cta-banner-content">
@@ -214,6 +252,32 @@ export function DashboardScreen({ data: fallbackData, onNavigate, onTabChange }:
           </div>
           <div className="journey-cta-banner-arrow">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6" /></svg>
+          </div>
+        </div>
+
+        {/* Explore Quick Access */}
+        <div className="section">
+          <div className="section-header">
+            <span className="section-title">Explore</span>
+          </div>
+          <div className="dash-explore-grid">
+            {([
+              { label: 'Search Contracts', screen: 'search' as const, icon: <SearchGridIcon /> },
+              { label: 'By Agency', screen: 'agency-list' as const, icon: <AgencyGridIcon /> },
+              { label: 'Spending Treemap', screen: 'spending-treemap' as const, icon: <TreemapGridIcon /> },
+              { label: 'Compare Years', screen: 'compare-years' as const, icon: <CompareGridIcon /> },
+              { label: 'Revenue vs Spending', screen: 'revenue-vs-spending' as const, icon: <RevSpendGridIcon /> },
+              { label: 'Interest Rates', screen: 'interest-rates' as const, icon: <InterestGridIcon /> },
+            ] as const).map((item) => (
+              <div
+                key={item.label}
+                className="dash-explore-item clickable"
+                onClick={() => onNavigate?.(item.screen)}
+              >
+                <span className="dash-explore-icon">{item.icon}</span>
+                <span className="dash-explore-label">{item.label}</span>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -454,4 +518,24 @@ function WarningIcon() {
       <line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" />
     </svg>
   );
+}
+
+// Explore grid icons
+function SearchGridIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>;
+}
+function AgencyGridIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 21h18" /><path d="M5 21V7l7-4 7 4v14" /><path d="M9 21v-4h6v4" /></svg>;
+}
+function TreemapGridIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="9" rx="1" /><rect x="14" y="3" width="7" height="5" rx="1" /><rect x="14" y="12" width="7" height="9" rx="1" /><rect x="3" y="16" width="7" height="5" rx="1" /></svg>;
+}
+function CompareGridIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 20V10" /><path d="M12 20V4" /><path d="M6 20v-6" /></svg>;
+}
+function RevSpendGridIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>;
+}
+function InterestGridIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>;
 }

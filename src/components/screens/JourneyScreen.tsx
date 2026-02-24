@@ -251,7 +251,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
             {/* Phase 1: Body + temporary quote (0.06 → 0.32) */}
             {(() => {
               const enter = fadeIn(p3, 0.06, 0.14);
-              const exit = fadeIn(p3, 0.26, 0.34);
+              const exit = fadeIn(p3, 0.30, 0.38);
               const o = enter * (1 - exit);
               const y = (1 - enter) * 30 + exit * -20;
               return (
@@ -266,7 +266,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
                   <div className="journey-quote-block">
                     <TypewriterText
                       text='The "temporary" suspension was never reversed.'
-                      progress={fadeIn(p3, 0.1, 0.24)}
+                      progress={fadeIn(p3, 0.1, 0.20)}
                     />
                   </div>
                 </div>
@@ -275,7 +275,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
 
             {/* Phase 2: Debt growth bars (0.32 → 0.64) */}
             {(() => {
-              const enter = fadeIn(p3, 0.32, 0.40);
+              const enter = fadeIn(p3, 0.36, 0.44);
               const exit = fadeIn(p3, 0.58, 0.66);
               const o = enter * (1 - exit);
               const y = (1 - enter) * 30 + exit * -20;
@@ -286,7 +286,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
                   opacity: o, transform: `translateY(${y}px)`, pointerEvents: o < 0.01 ? 'none' : 'auto',
                 }}>
                   <div className="journey-visual-wide">
-                    <DebtGrowthBars progress={fadeIn(p3, 0.34, 0.58)} />
+                    <DebtGrowthBars progress={fadeIn(p3, 0.38, 0.58)} />
                   </div>
                 </div>
               );
@@ -392,7 +392,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
                   <div className="journey-quote-block">
                     <TypewriterText
                       text="We don't have a trillion-dollar debt because we haven't taxed enough; we have a trillion-dollar debt because we spend too much."
-                      progress={fadeIn(p4, 0.70, 0.90)}
+                      progress={fadeIn(p4, 0.70, 0.84)}
                     />
                     <div className="journey-attribution">— Ronald Reagan</div>
                   </div>
@@ -474,7 +474,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
                   <div className="journey-quote-block">
                     <TypewriterText
                       text="Inflation is always and everywhere a monetary phenomenon."
-                      progress={fadeIn(p5, 0.74, 0.92)}
+                      progress={fadeIn(p5, 0.74, 0.86)}
                     />
                     <div className="journey-attribution">— Milton Friedman</div>
                   </div>
