@@ -262,17 +262,17 @@ export function DashboardScreen({ data: fallbackData, onNavigate, onTabChange }:
           </div>
           <div className="dash-explore-grid">
             {([
-              { label: 'Search Contracts', screen: 'search' as const, icon: <SearchGridIcon /> },
-              { label: 'By Agency', screen: 'agency-list' as const, icon: <AgencyGridIcon /> },
-              { label: 'Spending Treemap', screen: 'spending-treemap' as const, icon: <TreemapGridIcon /> },
-              { label: 'Compare Years', screen: 'compare-years' as const, icon: <CompareGridIcon /> },
-              { label: 'Revenue vs Spending', screen: 'revenue-vs-spending' as const, icon: <RevSpendGridIcon /> },
-              { label: 'Interest Rates', screen: 'interest-rates' as const, icon: <InterestGridIcon /> },
-            ] as const).map((item) => (
+              { label: 'Search Contracts', screen: 'search' as SubScreen, params: { filter: 'contracts' }, icon: <SearchGridIcon /> },
+              { label: 'By Agency', screen: 'agency-list' as SubScreen, icon: <AgencyGridIcon /> },
+              { label: 'Spending Treemap', screen: 'spending-treemap' as SubScreen, icon: <TreemapGridIcon /> },
+              { label: 'Compare Years', screen: 'compare-years' as SubScreen, icon: <CompareGridIcon /> },
+              { label: 'Revenue vs Spending', screen: 'revenue-vs-spending' as SubScreen, icon: <RevSpendGridIcon /> },
+              { label: 'Interest Rates', screen: 'interest-rates' as SubScreen, icon: <InterestGridIcon /> },
+            ]).map((item) => (
               <div
                 key={item.label}
                 className="dash-explore-item clickable"
-                onClick={() => onNavigate?.(item.screen)}
+                onClick={() => onNavigate?.(item.screen, item.params)}
               >
                 <span className="dash-explore-icon">{item.icon}</span>
                 <span className="dash-explore-label">{item.label}</span>

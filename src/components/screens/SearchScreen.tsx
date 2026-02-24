@@ -12,6 +12,7 @@ import type { AwardSearchResult } from '../../types';
 
 interface SearchScreenProps {
   onBack: () => void;
+  params?: Record<string, string | number>;
 }
 
 type AwardFilter = 'all' | 'contracts' | 'grants' | 'loans';
@@ -32,9 +33,10 @@ const SUGGESTIONS = [
   'cybersecurity',
 ];
 
-export function SearchScreen({ onBack }: SearchScreenProps) {
+export function SearchScreen({ onBack, params }: SearchScreenProps) {
+  const initialFilter = (params?.filter as AwardFilter) || 'all';
   const [query, setQuery] = useState('');
-  const [filter, setFilter] = useState<AwardFilter>('all');
+  const [filter, setFilter] = useState<AwardFilter>(initialFilter);
   const [results, setResults] = useState<AwardSearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);

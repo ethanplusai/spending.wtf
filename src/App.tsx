@@ -110,7 +110,7 @@ function App() {
       case 'revenue-breakdown':
         return <RevenueBreakdownScreen onBack={goBack} />;
       case 'search':
-        return <SearchScreen onBack={goBack} />;
+        return <SearchScreen onBack={goBack} params={subScreenParams} />;
       case 'methodology':
         return <MethodologyScreen onBack={goBack} />;
       case 'spending-treemap':

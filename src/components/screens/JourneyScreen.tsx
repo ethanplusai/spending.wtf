@@ -83,12 +83,12 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
   const p1 = sp(0, 1.5);
   const p2 = sp(1.5, 3.0);
   const p3 = sp(4.5, 3.5);
-  const p4 = sp(8.0, 3.5);
-  const p5 = sp(11.5, 3.5);
-  const p6 = sp(15.0, 3.5);
-  const p7 = sp(18.5, 3.0);
-  const p8 = sp(21.5, 3.5);
-  const p9 = sp(25.0, 2.5);
+  const p4 = sp(8.0, 4.5);
+  const p5 = sp(12.5, 4.5);
+  const p6 = sp(17.0, 3.5);
+  const p7 = sp(20.5, 3.0);
+  const p8 = sp(23.5, 3.5);
+  const p9 = sp(27.0, 2.5);
 
   const heroCountProgress = Math.max(heroAuto, fadeIn(p1, 0, 0.3));
 
@@ -313,7 +313,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
       </section>
 
       {/* ========== S4: THE RATCHET ========== */}
-      <section className="journey-section" style={{ height: '350vh' }}>
+      <section className="journey-section" style={{ height: '450vh' }}>
         <div className="journey-sticky">
           <SectionLabel text="THE RATCHET" progress={p4} />
           <h2 className="journey-section-title" style={{ opacity: fadeIn(p4, 0.02, 0.08) }}>
@@ -392,7 +392,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
                   <div className="journey-quote-block">
                     <TypewriterText
                       text="We don't have a trillion-dollar debt because we haven't taxed enough; we have a trillion-dollar debt because we spend too much."
-                      progress={fadeIn(p4, 0.70, 0.84)}
+                      progress={fadeIn(p4, 0.70, 0.78)}
                     />
                     <div className="journey-attribution">— Ronald Reagan</div>
                   </div>
@@ -404,7 +404,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
       </section>
 
       {/* ========== S5: THE MONEY PRINTER ========== */}
-      <section className="journey-section" style={{ height: '350vh' }}>
+      <section className="journey-section" style={{ height: '450vh' }}>
         <div className="journey-sticky" style={{ position: 'sticky', top: 0 }}>
           <SectionLabel text="THE MONEY PRINTER" progress={p5} />
           <h2 className="journey-section-title" style={{ opacity: fadeIn(p5, 0.02, 0.08) }}>
@@ -474,7 +474,7 @@ export function JourneyScreen({ onBack, onTabChange }: JourneyScreenProps) {
                   <div className="journey-quote-block">
                     <TypewriterText
                       text="Inflation is always and everywhere a monetary phenomenon."
-                      progress={fadeIn(p5, 0.74, 0.86)}
+                      progress={fadeIn(p5, 0.74, 0.80)}
                     />
                     <div className="journey-attribution">— Milton Friedman</div>
                   </div>
