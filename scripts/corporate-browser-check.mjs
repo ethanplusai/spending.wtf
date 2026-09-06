@@ -3,7 +3,9 @@ import AxeBuilder from "@axe-core/playwright";
 import fs from "node:fs";
 const browser = await chromium.launch(),
   failures = [];
-fs.mkdirSync("docs/previews-v6", { recursive: true });
+const out = process.env.ARTIFACT_DIR || "docs/previews-v6";
+const base = process.env.BASE_URL || "http://127.0.0.1:4319";
+fs.mkdirSync(out, { recursive: true });
 for (const width of [1440, 390]) {
   const context = await browser.newContext({
       viewport: { width, height: 1000 },
@@ -11,7 +13,7 @@ for (const width of [1440, 390]) {
     }),
     page = await context.newPage();
   page.on("pageerror", (e) => failures.push(e.message));
-  await page.goto("http://127.0.0.1:4319/taxes/corporations");
+  await page.goto(base + "/taxes/corporations");
   await page.locator(".corporate-ledger>button").first().waitFor();
   for (const mode of ["reported", "workforce"]) {
     if (mode === "workforce")
@@ -37,7 +39,7 @@ for (const width of [1440, 390]) {
     )
       failures.push("Overflow " + width + " " + mode);
     await page.screenshot({
-      path: `docs/previews-v6/corporations-${mode}-${width}.png`,
+      path: `${out}/corporations-${mode}-${width}.png`,
       fullPage: true,
     });
   }
@@ -45,7 +47,7 @@ for (const width of [1440, 390]) {
 }
 const noJS = await browser.newContext({ javaScriptEnabled: false });
 const page = await noJS.newPage();
-await page.goto("http://127.0.0.1:4319/taxes/corporations");
+await page.goto(base + "/taxes/corporations");
 if (!(await page.locator(".corporate-ledger").innerText()).includes("Alphabet"))
   failures.push("Missing no-JS corporate data");
 await noJS.close();

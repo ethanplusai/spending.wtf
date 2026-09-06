@@ -2,7 +2,8 @@ import { chromium } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import fs from "node:fs";
 const browser = await chromium.launch();
-const out = "docs/previews-v5";
+const out = process.env.ARTIFACT_DIR || "docs/previews-v5";
+const base = process.env.BASE_URL || "http://127.0.0.1:4319";
 fs.mkdirSync(out, { recursive: true });
 let failures = [];
 for (const width of [1440, 390]) {
@@ -20,7 +21,7 @@ for (const width of [1440, 390]) {
     "/budget",
     "/",
   ]) {
-    await page.goto("http://127.0.0.1:4319" + route);
+    await page.goto(base + route);
     await page.waitForTimeout(700);
     const overflow = await page.evaluate(
       () => document.documentElement.scrollWidth > innerWidth,

@@ -56,6 +56,19 @@ assert.ok(
 await get("/api/v1/corporations?year=2025&measure=federalCash");
 await get("/api/v1/taxes?dataset=geography&zip=02139&year=2022");
 await get("/llms.txt");
+const workforce = await (
+  await get("/api/v1/workforce-estimate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      ticker: "MSFT",
+      annualTaxablePay: 75000,
+      effectiveRate: 15,
+    }),
+  })
+).json();
+assert.equal(workforce.rows[0].estimate.employeeIncomeTax, 1406250000);
+assert.match(workforce.classification, /not observed payments/);
 const sitemap = await (await get("/sitemap.xml")).text();
 assert.equal((sitemap.match(/<loc>/g) || []).length, 12);
 for (const path of [
@@ -82,6 +95,15 @@ try {
     }),
   );
   assert.equal((await client.listTools()).tools.length, 13);
+  const resources = (await client.listResources()).resources;
+  assert.equal(resources.length, 2);
+  for (const resource of resources) {
+    const result = await client.readResource({ uri: resource.uri });
+    assert.ok(
+      result.contents.length > 0,
+      `Empty MCP resource: ${resource.uri}`,
+    );
+  }
   const result = await client.callTool({
     name: "query_taxes",
     arguments: { dataset: "income", year: 2023 },

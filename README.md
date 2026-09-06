@@ -26,7 +26,7 @@ The latest design uses a stark black/white palette with electric red, a playable
 
 A working MCP server supports both stdio (`npm run mcp`) and stateless Streamable HTTP (`POST /mcp`). The same source-backed query layer is available through `/api/v1/catalog`, `/api/v1/series/:dataset`, and `/api/v1/purchasing-power`; live awards use `/api/awards`; `/api/v1/explore` provides aggregate funding queries. Discovery and setup are published at `/llms.txt` and `/agents/README.md`. See [the agent guide](public/agents/README.md).
 
-MCP has thirteen read-only tools and two resources. Set `MCP_ALLOWED_HOSTS` to your hostname when publishing remotely. Tool output includes sources, units, observation periods, retrieval times, and limitations. This improves interoperability; it does not guarantee indexing or recognition.
+MCP has thirteen read-only tools and two resources. The production domain and exact Vercel deployment hosts are allowed automatically; set `MCP_ALLOWED_HOSTS` for other custom hosts. Tool output includes sources, units, observation periods, retrieval times, and limitations. This improves interoperability; it does not guarantee indexing or recognition.
 
 ## What is implemented
 
@@ -135,3 +135,5 @@ Use `rank_corporate_taxes` / `GET /api/v1/corporations` and `estimate_employee_t
 ## Release operations
 
 Vercel uses `vercel.json` and `npm run build:vercel` to deploy CDN assets and a Node function for server-rendered pages, API and MCP. Weekly validated refreshes open a data pull request. Hourly and post-production-deployment smoke checks exercise the live site and upstream providers. See [the release runbook](docs/release-runbook.md) for limitations, settings and rollback.
+
+Production launch checks and the remaining account settings are recorded in [production-launch.md](docs/production-launch.md).
