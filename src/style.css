@@ -928,6 +928,17 @@ footer p {
   color: #5d5d5d;
   margin-top: 20px;
 }
+.footer-signoff {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+.footer-credit {
+  text-decoration: underline;
+  text-decoration-color: #b8b8b8;
+  text-underline-offset: 3px;
+}
 .footer-bottom > span:last-child {
   font-size: 7px;
   letter-spacing: 1px;

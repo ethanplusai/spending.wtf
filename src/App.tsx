@@ -219,7 +219,17 @@ function AppContent() {
           <span>Independent. No government affiliation.</span>
         </div>
         <div className="footer-bottom">
-          <span>Built for the people who pay for it.</span>
+          <div className="footer-signoff">
+            <span>Built for the people who pay for it.</span>
+            <a
+              className="footer-credit"
+              href="https://ethanplus.ai"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Built by Ethan
+            </a>
+          </div>
           <span>UNITED STATES · PUBLIC RECORD</span>
         </div>
       </footer>
