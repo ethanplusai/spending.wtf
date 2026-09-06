@@ -1,5 +1,7 @@
 # Search, answer access and tax research — September 2026
 
+Historical implementation record. Current release details supersede the counts and coverage below: the race/data-gap view was removed, 12 public routes remain, and the corporate explorer covers 13 issuers. See [corporate expansion](corporate-expansion-v6.md) and [release operations](release-runbook.md).
+
 The flag has been removed from the interface. The brand is the spending.wtf wordmark; a small dollar favicon identifies browser tabs.
 
 ## Search implementation

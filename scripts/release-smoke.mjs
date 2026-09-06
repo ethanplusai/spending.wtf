@@ -10,6 +10,7 @@ const headers = process.env.VERCEL_AUTOMATION_BYPASS_SECRET
 async function get(path, options = {}) {
   const response = await fetch(new URL(path, base), {
     ...options,
+    redirect: "manual",
     headers: { ...headers, ...options.headers },
     signal: AbortSignal.timeout(55000),
   });
@@ -31,10 +32,9 @@ for (const path of [
   "/taxes/corporations",
 ]) {
   const html = await (await get(path)).text();
-  assert.match(html, /<h1[ >]/, `${path}: missing server rendering`);
-  assert.match(
-    html,
-    /application\/ld\+json/,
+  assert.ok(/<h1[ >]/.test(html), `${path}: missing server rendering`);
+  assert.ok(
+    /application\/ld\+json/.test(html),
     `${path}: missing structured data`,
   );
   const robots = html.match(/<meta name="robots" content="([^"]+)"/)?.[1];

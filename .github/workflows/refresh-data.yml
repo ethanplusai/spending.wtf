@@ -30,6 +30,11 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run test:seo
+      - uses: actions/upload-artifact@v4
+        with:
+          name: validated-public-data
+          path: public/data
+          retention-days: 14
       - uses: peter-evans/create-pull-request@v7
         with:
           branch: automated/public-data-refresh
