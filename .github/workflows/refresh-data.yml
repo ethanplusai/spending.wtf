@@ -1,0 +1,47 @@
+name: Refresh public data
+on:
+  schedule:
+    - cron: '43 9 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: refresh-public-data
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npm run data:refresh
+      - run: npm run data:expand
+      - run: npm run data:taxes
+      - run: npm run data:corporations
+      - run: npm test
+      - run: npm run build
+      - run: npm run test:seo
+      - uses: actions/upload-artifact@v4
+        with:
+          name: validated-public-data
+          path: public/data
+          retention-days: 14
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automated/public-data-refresh
+          commit-message: 'Refresh validated public data snapshots'
+          title: 'Refresh validated public data snapshots'
+          body: |
+            Updates public-source snapshots after all refresh commands, data tests, build and SEO checks succeed.
+
+            Review source observation dates, revisions and the preview before merging. IRS and OMB publication URLs remain deliberately pinned; corporate disclosures are reviewed inputs, not an automatic SEC feed.
+          add-paths: public/data

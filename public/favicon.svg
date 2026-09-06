@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="16" fill="#2c2c2e"/>
-  <text x="50" y="72" font-size="62" text-anchor="middle">🏛️</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#111116"/><text x="32" y="47" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="49" font-weight="700">$</text></svg>

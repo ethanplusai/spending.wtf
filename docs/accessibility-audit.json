@@ -1,0 +1,34 @@
+[
+  {
+    "view": "overview",
+    "violations": []
+  },
+  {
+    "view": "contracts",
+    "violations": []
+  },
+  {
+    "view": "history",
+    "violations": []
+  },
+  {
+    "view": "places",
+    "violations": []
+  },
+  {
+    "view": "methodology",
+    "violations": []
+  },
+  {
+    "view": "budget",
+    "violations": []
+  },
+  {
+    "view": "atlas",
+    "violations": []
+  },
+  {
+    "view": "organizations",
+    "violations": []
+  }
+]

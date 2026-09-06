@@ -1,0 +1,24 @@
+name: Monitor production
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  deployment_status:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    if: github.event_name != 'deployment_status' || (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run test:smoke
+        env:
+          BASE_URL: https://spending.wtf
+          CHECK_UPSTREAM: '1'
