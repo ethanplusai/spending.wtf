@@ -6,18 +6,34 @@
   "functions": {
     "api/index.mjs": {
       "maxDuration": 60,
-      "includeFiles": "{dist/server/**,dist/data/**,public/data/**}"
+      "includeFiles": "{package.json,dist/server/**,dist/data/**,dist/agents/**,public/data/**,public/agents/**}"
     }
   },
   "routes": [
-    { "src": "/server(?:/.*)?", "status": 404 },
-    { "src": "/index.html", "status": 308, "headers": { "Location": "/" } },
+    {
+      "src": "/server(?:/.*)?",
+      "status": 404
+    },
+    {
+      "src": "/index.html",
+      "status": 308,
+      "headers": {
+        "Location": "/"
+      }
+    },
     {
       "src": "/assets/(.*)",
-      "headers": { "Cache-Control": "public, max-age=31536000, immutable" },
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
       "continue": true
     },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/api/index" }
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index"
+    }
   ]
 }

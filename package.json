@@ -19,7 +19,8 @@
     "test:seo": "node --test tests/seo.production.mjs",
     "data:corporations": "python3 scripts/expand-corporate-data.py",
     "build:vercel": "npm run build && node scripts/prepare-vercel.mjs",
-    "test:smoke": "node scripts/release-smoke.mjs"
+    "test:smoke": "node scripts/release-smoke.mjs",
+    "test:deployment": "node --test tests/deployment.production.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
