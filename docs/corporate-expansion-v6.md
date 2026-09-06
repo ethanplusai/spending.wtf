@@ -1,0 +1,17 @@
+# Corporate taxes and workforce scenarios
+
+Expanded the previous two-company disclosure viewer to 13 major issuers / 39 company-years: Microsoft, Verizon, Amazon, Alphabet, Apple, Meta, Berkshire Hathaway, Walmart, Tesla, NVIDIA, Costco, Target and JPMorgan Chase.
+
+The UI ranks matching captured observations by federal cash, worldwide cash or current federal expense, with fiscal-year selection, company search, explicit coverage counts, nulls unranked, net refunds retained, exact fiscal period ends, issuer notes and CSV export. Each company opens a complete captured-period table. The ranking is not the national top-taxpayer list. NVIDIA FY2026 and Target FY2025 illustrate why issuer fiscal labels and calendar years must not be conflated.
+
+The employee view is a standardized adjustable scenario. It uses reported US workforce where available and clearly derived counts for reported approximate US shares. Other issuers remain unestimated unless the user explicitly enables an assumed US share. Taxable pay and effective federal rate are always assumptions. Results include sensitivity bounds, formula, workforce date and source; they are not individual tax-return calculations, company-specific payroll estimates, confidence intervals, corporate payments or causal tax contributions. A reported hourly-pay context for Costco is included as context, not silently treated as annual compensation for its entire workforce.
+
+Two HTTP endpoints and two MCP tools expose the same reported/model separation. UI and API share scenario arithmetic in `shared/workforce-model.mjs`. Docker copies that shared module. See `/agents/corporations.md` for fields, examples and all caveats.
+
+Sources were reviewed directly on SEC or issuer annual-report pages. The reviewed normalization is reproducible via `npm run data:corporations`; this script is explicit reviewed source observations, not an automatic filing parser. Primary links and notes reside with each issuer. Bulk financial-statement and companyfacts requests were attempted with a descriptive User-Agent and both returned HTTP 403. A complete large-cap or all-issuer import is therefore not represented as done.
+
+For eventual systematic coverage, ingest official quarterly XBRL data plus jurisdiction-specific tax notes; restrict annual consolidated observations by filing/form, duration, unit, context and fiscal period; resolve amendments and comparative restatements; distinguish IncomeTaxesPaidNet from income-tax provisions; preserve negative values and missing federal disaggregation; define and publish the issuer universe; review credit-purchase and consolidation exceptions. Employee estimates additionally require reliable US annual-average employment and compensation distributions. Do not substitute CEO pay ratios or global median compensation for US mean taxable wages.
+
+SEC bulk data guidance: https://www.sec.gov/data-research/sec-markets-data/financial-statement-data-sets
+
+Validation: production build and lint pass; 29 data/API/MCP tests pass including calls to both new MCP tools; six tax browser tests pass; four production SEO checks pass. Production HTTP returns the verified JPMorgan net-refund observation and Microsoft scenario. Desktop/mobile corporate and workforce views pass the tested WCAG A/AA checks, have no page overflow or hydration errors, and the reported ranking remains visible without JavaScript. Screenshots are in `docs/previews-v6/`. Automated accessibility checks are not a full accessibility audit.

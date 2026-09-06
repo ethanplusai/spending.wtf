@@ -1,191 +1,245 @@
-/**
- * spending.wtf — Federal Spending Tracker
- * Responsive web app: navbar on desktop, tab bar on mobile
- */
+import { useContext, useEffect, useState } from "react";
+import { ArrowUpRight, Search, Menu, X, Bookmark, Check } from "lucide-react";
+import type { Award, Data, Page } from "./data";
 
-import { useState, useEffect, useCallback } from 'react';
-import { Navbar } from './components/Navbar';
-import { TabBar } from './components/TabBar';
-import {
-  DashboardScreen,
-  RecurringScreen,
-  SpendingScreen,
-  DebtScreen,
-  MenuScreen,
-  AgencyListScreen,
-  AgencyDetailScreen,
-  StateListScreen,
-  StateDetailScreen,
-  HistoricalScreen,
-  CompareYearsScreen,
-  RevenueBreakdownScreen,
-  MethodologyScreen,
-  SearchScreen,
-  SpendingTreemapScreen,
-  RevenueVsSpendingScreen,
-  InterestRatesScreen,
-  JourneyScreen,
-} from './components/screens';
+import { EnvironmentContext, type Environment } from "./environment";
+import { pageFromURL, pageURL } from "./routes";
+import Taxes from "./pages/Taxes";
+import AnswerNotes from "./components/AnswerNotes";
+import Motion from "./components/Motion";
+import Overview from "./pages/Overview";
+import Contracts from "./pages/Contracts";
+import History from "./pages/History";
+import Organizations from "./pages/Organizations";
+import Budget from "./pages/Budget";
+import Atlas from "./pages/Atlas";
+import Places from "./pages/Places";
+import Methodology from "./pages/Methodology";
 
-import type { TabId, SubScreen } from './types';
-import './styles/index.css';
+const nav: [Page, string][] = [
+  ["overview", "Overview"],
+  ["budget", "The budget"],
+  ["taxes", "Who pays"],
+  ["contracts", "Awards"],
+  ["atlas", "Funding atlas"],
+  ["history", "Debt & the dollar"],
+  ["places", "State & local"],
+];
 
-// Government spending data (FY2025 estimates — fallback)
-const govData = {
-  dashboard: {
-    fiscalYear: 2025,
-    totalSpending: 7.0e12,
-    totalRevenue: 5.05e12,
-    deficit: 1.95e12,
-    dailySpending: 19.2e9,
-    perCapita: 20900,
-  },
-  recurring: {
-    programs: [
-      { name: 'Social Security', annualCost: 1.54e12, frequency: 'Mandatory', trend: 'up' as const, category: 'social' },
-      { name: 'Medicare', annualCost: 900e9, frequency: 'Mandatory', trend: 'up' as const, category: 'health' },
-      { name: 'Medicaid', annualCost: 650e9, frequency: 'Mandatory', trend: 'up' as const, category: 'health' },
-      { name: 'Interest on Debt', annualCost: 968e9, frequency: 'Mandatory', trend: 'up' as const, category: 'interest' },
-      { name: 'Veterans Benefits', annualCost: 351e9, frequency: 'Mandatory', trend: 'up' as const, category: 'veterans' },
-      { name: 'Defense (DoD)', annualCost: 895e9, frequency: 'Discretionary', trend: 'up' as const, category: 'defense' },
-      { name: 'Education', annualCost: 98e9, frequency: 'Discretionary', trend: 'down' as const, category: 'education' },
-      { name: 'Transportation', annualCost: 115e9, frequency: 'Discretionary', trend: 'stable' as const, category: 'transport' },
-      { name: 'Housing & Urban Dev', annualCost: 75e9, frequency: 'Discretionary', trend: 'stable' as const, category: 'housing' },
-      { name: 'Energy', annualCost: 52e9, frequency: 'Discretionary', trend: 'up' as const, category: 'energy' },
-    ],
-  },
-  menu: {
-    lastUpdated: new Date().toLocaleDateString(),
-    dataSource: 'USAspending.gov',
-  },
-};
-
-function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('dashboard');
-  const [subScreen, setSubScreen] = useState<SubScreen | null>('journey');
-  const [subScreenParams, setSubScreenParams] = useState<Record<string, string | number>>({});
-
-  const navigate = useCallback((screen: SubScreen, params?: Record<string, string | number>) => {
-    setSubScreen(screen);
-    setSubScreenParams(params || {});
-  }, []);
-
-  const goBack = useCallback(() => {
-    setSubScreen(null);
-    setSubScreenParams({});
-  }, []);
-
-  const handleTabChange = useCallback((tab: TabId) => {
-    setActiveTab(tab);
-    setSubScreen(null);
-    setSubScreenParams({});
-  }, []);
-
-  // Cmd+K / Ctrl+K global search shortcut
+function AppContent() {
+  const environment = useContext(EnvironmentContext);
+  const [page, setPage] = useState<Page>(() => pageFromURL(environment.url)),
+    [data, setData] = useState<Data | null>(
+      (environment.snapshots.normalized as Data) ?? null,
+    ),
+    [failure, setFailure] = useState(""),
+    [mobile, setMobile] = useState(false),
+    [toast, setToast] = useState(""),
+    [saved, setSaved] = useState<Award[]>([]);
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        navigate('search');
-      }
-    };
-    window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
-  }, [navigate]);
-
-  const renderSubScreen = () => {
-    switch (subScreen) {
-      case 'agency-list':
-        return <AgencyListScreen onBack={goBack} onNavigate={navigate} />;
-      case 'agency-detail':
-        return <AgencyDetailScreen onBack={goBack} params={subScreenParams} />;
-      case 'state-list':
-        return <StateListScreen onBack={goBack} onNavigate={navigate} />;
-      case 'state-detail':
-        return <StateDetailScreen onBack={goBack} params={subScreenParams} />;
-      case 'historical':
-        return <HistoricalScreen onBack={goBack} />;
-      case 'compare-years':
-        return <CompareYearsScreen onBack={goBack} />;
-      case 'revenue-breakdown':
-        return <RevenueBreakdownScreen onBack={goBack} />;
-      case 'search':
-        return <SearchScreen onBack={goBack} params={subScreenParams} />;
-      case 'methodology':
-        return <MethodologyScreen onBack={goBack} />;
-      case 'spending-treemap':
-        return <SpendingTreemapScreen onBack={goBack} />;
-      case 'revenue-vs-spending':
-        return <RevenueVsSpendingScreen onBack={goBack} />;
-      case 'interest-rates':
-        return <InterestRatesScreen onBack={goBack} />;
-      case 'journey':
-        return <JourneyScreen onBack={goBack} onNavigate={navigate} onTabChange={handleTabChange} />;
-      default:
-        return null;
+    // Restore browser-only state after hydration so saved records cannot change the server markup.
+    try {
+      const saved = JSON.parse(localStorage.getItem("ledger-saved") || "[]");
+      if (Array.isArray(saved))
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setSaved(
+          saved.filter(
+            (x) =>
+              x &&
+              typeof x.generated_internal_id === "string" &&
+              typeof x["Award Amount"] === "number",
+          ),
+        );
+    } catch {
+      /* Storage unavailable. */
     }
-  };
-
-  const renderScreen = () => {
-    // Sub-screen takes priority
-    if (subScreen) {
-      const subScreenContent = renderSubScreen();
-      if (subScreenContent) return subScreenContent;
+    fetch("/data/normalized.json")
+      .then((r) => {
+        if (!r.ok) throw Error("Data could not be loaded");
+        return r.json();
+      })
+      .then(setData)
+      .catch((e) => setFailure(e.message));
+    const fn = () => setPage(pageFromURL(location.href));
+    window.addEventListener("popstate", fn);
+    return () => window.removeEventListener("popstate", fn);
+  }, []);
+  useEffect(() => {
+    if (toast) {
+      const t = setTimeout(() => setToast(""), 4000);
+      return () => clearTimeout(t);
     }
-
-    switch (activeTab) {
-      case 'dashboard':
-        return (
-          <DashboardScreen
-            data={govData.dashboard}
-            onNavigate={navigate}
-            onTabChange={handleTabChange}
-          />
-        );
-      case 'subscriptions':
-        return <RecurringScreen data={govData.recurring} />;
-      case 'spending':
-        return (
-          <SpendingScreen
-            onNavigate={navigate}
-            onTabChange={handleTabChange}
-          />
-        );
-      case 'transactions':
-        return <DebtScreen />;
-      case 'debt':
-        return (
-          <MenuScreen
-            data={govData.menu}
-            onNavigate={navigate}
-            onRefresh={() => {
-              // Trigger global refresh if needed
-              govData.menu.lastUpdated = new Date().toLocaleDateString();
-            }}
-          />
-        );
-      default:
-        return (
-          <DashboardScreen
-            data={govData.dashboard}
-            onNavigate={navigate}
-            onTabChange={handleTabChange}
-          />
-        );
+  }, [toast]);
+  function go(p: Page, extra: Record<string, string> = {}) {
+    history.pushState({}, "", pageURL(p, extra));
+    setPage(p);
+    setMobile(false);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+  function save(a: Award) {
+    const next = saved.some(
+      (x) => x.generated_internal_id === a.generated_internal_id,
+    )
+      ? saved.filter((x) => x.generated_internal_id !== a.generated_internal_id)
+      : [...saved, a];
+    setSaved(next);
+    try {
+      localStorage.setItem("ledger-saved", JSON.stringify(next));
+      setToast(
+        next.length > saved.length
+          ? "Award saved to your research notebook."
+          : "Award removed from your notebook.",
+      );
+    } catch {
+      setToast("Browser storage unavailable. Saved for this session only.");
     }
-  };
-
+  }
   return (
-    <div className="app-shell">
-      <Navbar activeTab={activeTab} onTabChange={handleTabChange} onNavigate={navigate} />
-      <main className="main-content">
-        <div className="content-container">
-          {renderScreen()}
+    <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <div className="utility">
+        <span>An independent look at America’s finances.</span>
+        <a href="/sources">
+          Public data. Open methodology. <ArrowUpRight size={12} />
+        </a>
+      </div>
+      <header>
+        <a
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            go("overview");
+          }}
+          className="wordmark"
+        >
+          spending<span>.wtf</span>
+        </a>
+        <nav aria-label="Main navigation" className={mobile ? "open" : ""}>
+          {nav.map(([p, label]) => (
+            <a
+              href={pageURL(p)}
+              key={p}
+              className={page === p ? "active" : ""}
+              onClick={(e) => {
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                e.preventDefault();
+                go(p);
+              }}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+        <div className="header-actions">
+          <button
+            className="icon-btn notebook"
+            aria-label={`Research notebook, ${saved.length} saved awards`}
+            onClick={() => go("saved")}
+          >
+            <Bookmark size={18} />
+            {saved.length > 0 && <i>{saved.length}</i>}
+          </button>
+          <button className="research-btn" onClick={() => go("contracts")}>
+            <Search size={15} /> Explore the data
+          </button>
+          <button
+            className="icon-btn mobile-toggle"
+            aria-label="Toggle navigation"
+            onClick={() => setMobile(!mobile)}
+          >
+            {mobile ? <X /> : <Menu />}
+          </button>
         </div>
+      </header>
+      <Motion route={page} />
+      <main id="main">
+        {failure ? (
+          <div className="empty">
+            <h1>We couldn’t load the ledger.</h1>
+            <p>{failure}</p>
+            <button className="btn" onClick={() => location.reload()}>
+              Try again
+            </button>
+          </div>
+        ) : !data ? (
+          <div className="loading">
+            <p>Opening the public ledger…</p>
+          </div>
+        ) : page === "overview" ? (
+          <Overview data={data} go={go} />
+        ) : page === "contracts" || page === "saved" ? (
+          <Contracts
+            key={page}
+            saved={saved}
+            save={save}
+            notebook={page === "saved"}
+            notify={setToast}
+          />
+        ) : page === "taxes" ? (
+          <Taxes />
+        ) : page === "budget" ? (
+          <Budget go={go} data={data} />
+        ) : page === "organizations" ? (
+          <Organizations go={go} />
+        ) : page === "atlas" ? (
+          <Atlas go={go} />
+        ) : page === "history" ? (
+          <History data={data} />
+        ) : page === "places" ? (
+          <Places go={go} data={data} />
+        ) : (
+          <Methodology />
+        )}
+        <AnswerNotes route={page} />
       </main>
-      <TabBar activeTab={activeTab} onTabChange={handleTabChange} />
-    </div>
+      <footer>
+        <div>
+          <a className="wordmark" href="/">
+            spending<span>.wtf</span>
+          </a>
+          <p>A public ledger. A better-informed public.</p>
+        </div>
+        <div className="footer-links">
+          <a href="/agents/README.md">
+            Agent access · API & MCP <ArrowUpRight size={14} />
+          </a>
+          <a href="/sources">
+            Sources & methodology <ArrowUpRight size={14} />
+          </a>
+          <a
+            href="https://github.com/ethanplusai/spending.wtf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open source <ArrowUpRight size={14} />
+          </a>
+          <span>Independent. No government affiliation.</span>
+        </div>
+        <div className="footer-bottom">
+          <span>Built for the people who pay for it.</span>
+          <span>UNITED STATES · PUBLIC RECORD</span>
+        </div>
+      </footer>
+      {toast && (
+        <div role="status" className="toast">
+          <Check size={16} />
+          {toast}
+        </div>
+      )}
+    </>
   );
 }
 
-export default App;
+export default function App({ environment }: { environment?: Environment }) {
+  const value = environment ?? {
+    url: typeof location === "undefined" ? "/" : location.href,
+    snapshots: {},
+  };
+  return (
+    <EnvironmentContext.Provider value={value}>
+      <AppContent />
+    </EnvironmentContext.Provider>
+  );
+}

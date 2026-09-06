@@ -1,0 +1,555 @@
+{
+  "schemaVersion": "2.0",
+  "retrievedAt": "2026-09-06",
+  "coverage": "13 selected major public companies across technology, retail, finance, conglomerates and telecom. Rankings apply only to captured observations, not all US corporations. Fiscal years differ; see exact period ends. Cash, accounting expense and modeled employee income taxes are separate measures. Missing values are null; net refunds remain negative.",
+  "selection": "Purposeful research set of major issuers with reviewed primary reports, not a statistical sample or a complete market-cap/revenue index.",
+  "companies": [
+    {
+      "name": "Microsoft",
+      "ticker": "MSFT",
+      "cik": "0000789019",
+      "source": "https://www.microsoft.com/investor/reports/ar25/",
+      "sourceNote": "2025 annual report, Note 11 \u2014 Income Taxes \u00b7 reviewed 2026-09-06",
+      "periodEnd": "June 30",
+      "years": [
+        {
+          "year": 2023,
+          "worldwideCash": 23100000000,
+          "federalCash": null,
+          "federalCurrentExpense": 14009000000,
+          "periodEnd": "2023-06-30"
+        },
+        {
+          "year": 2024,
+          "worldwideCash": 23400000000,
+          "federalCash": null,
+          "federalCurrentExpense": 12165000000,
+          "periodEnd": "2024-06-30"
+        },
+        {
+          "year": 2025,
+          "worldwideCash": 28700000000,
+          "federalCash": null,
+          "federalCurrentExpense": 14086000000,
+          "periodEnd": "2025-06-30"
+        }
+      ],
+      "notes": "",
+      "workforce": {
+        "global": 228000,
+        "us": 125000,
+        "date": "2025-06-30",
+        "source": "https://www.microsoft.com/investor/reports/ar25/",
+        "note": "Full-time employees; US count reported separately.",
+        "usDerived": false
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": null
+    },
+    {
+      "name": "Verizon",
+      "ticker": "VZ",
+      "cik": "0000732712",
+      "source": "https://www.sec.gov/Archives/edgar/data/732712/000073271226000007/vz-20251231.htm",
+      "sourceNote": "2025 Form 10-K, Note 11 \u2014 Income Taxes, cash taxes paid table \u00b7 reviewed 2026-09-06",
+      "periodEnd": "December 31",
+      "years": [
+        {
+          "year": 2023,
+          "worldwideCash": 2343000000,
+          "federalCash": 1447000000,
+          "federalCurrentExpense": null,
+          "periodEnd": "2023-12-31"
+        },
+        {
+          "year": 2024,
+          "worldwideCash": 5632000000,
+          "federalCash": 4745000000,
+          "federalCurrentExpense": null,
+          "periodEnd": "2024-12-31"
+        },
+        {
+          "year": 2025,
+          "worldwideCash": 3581000000,
+          "federalCash": 2236000000,
+          "federalCurrentExpense": null,
+          "periodEnd": "2025-12-31"
+        }
+      ],
+      "notes": "",
+      "workforce": {
+        "global": 89900,
+        "us": 80011,
+        "date": "2025-12-31",
+        "source": "https://www.sec.gov/Archives/edgar/data/732712/000073271226000007/vz-20251231.htm",
+        "note": "Approximate US FTE derived from 89,900 global FTE \u00d7 reported 89% US share.",
+        "usDerived": true
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": "000073271226000007"
+    },
+    {
+      "name": "Amazon",
+      "ticker": "AMZN",
+      "cik": "0001018724",
+      "source": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+      "sourceNote": "Annual report: consolidated cash flows and income tax note \u00b7 reviewed 2026-09-06",
+      "periodEnd": "December 31",
+      "years": [
+        {
+          "year": 2023,
+          "periodEnd": "2023-12-31",
+          "worldwideCash": 11179000000,
+          "federalCash": 7435000000,
+          "federalCurrentExpense": 8652000000
+        },
+        {
+          "year": 2024,
+          "periodEnd": "2024-12-31",
+          "worldwideCash": 12308000000,
+          "federalCash": 7630000000,
+          "federalCurrentExpense": 9039000000
+        },
+        {
+          "year": 2025,
+          "periodEnd": "2025-12-31",
+          "worldwideCash": 8295000000,
+          "federalCash": 2751000000,
+          "federalCurrentExpense": 1220000000
+        }
+      ],
+      "notes": "",
+      "workforce": {
+        "global": 1576000,
+        "us": null,
+        "date": "2025-12-31",
+        "source": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+        "note": "Worldwide full-time and part-time employees; excludes supplemental contractors and temporary personnel. US count not captured.",
+        "usDerived": false
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": "000101872426000004"
+    },
+    {
+      "name": "Alphabet",
+      "ticker": "GOOGL",
+      "cik": "0001652044",
+      "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+      "sourceNote": "Annual report: consolidated cash flows and income tax note \u00b7 reviewed 2026-09-06",
+      "periodEnd": "December 31",
+      "years": [
+        {
+          "year": 2023,
+          "periodEnd": "2023-12-31",
+          "worldwideCash": 19164000000,
+          "federalCash": 13689000000,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2024,
+          "periodEnd": "2024-12-31",
+          "worldwideCash": 27353000000,
+          "federalCash": 19921000000,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2025,
+          "periodEnd": "2025-12-31",
+          "worldwideCash": 21526000000,
+          "federalCash": 13658000000,
+          "federalCurrentExpense": null
+        }
+      ],
+      "notes": "Current tax expense combines federal and state; it is not treated as federal-only expense.",
+      "workforce": {
+        "global": 190820,
+        "us": null,
+        "date": "2025-12-31",
+        "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+        "note": "Worldwide employees; US count not captured.",
+        "usDerived": false
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": "000165204426000018"
+    },
+    {
+      "name": "Apple",
+      "ticker": "AAPL",
+      "cik": "0000320193",
+      "source": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+      "sourceNote": "Annual report: consolidated cash flows and income tax note \u00b7 reviewed 2026-09-06",
+      "periodEnd": "September fiscal year end",
+      "years": [
+        {
+          "year": 2023,
+          "periodEnd": "2023-09-30",
+          "worldwideCash": 18679000000,
+          "federalCash": null,
+          "federalCurrentExpense": 9445000000
+        },
+        {
+          "year": 2024,
+          "periodEnd": "2024-09-28",
+          "worldwideCash": 26102000000,
+          "federalCash": null,
+          "federalCurrentExpense": 5571000000
+        },
+        {
+          "year": 2025,
+          "periodEnd": "2025-09-27",
+          "worldwideCash": 43369000000,
+          "federalCash": null,
+          "federalCurrentExpense": 11487000000
+        }
+      ],
+      "notes": "Worldwide payments include multiple jurisdictions and timing effects; US federal cash is not separately captured in this report.",
+      "workforce": {
+        "global": 166000,
+        "us": null,
+        "date": "2025-09-27",
+        "source": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+        "note": "Worldwide full-time equivalent employees; not headcount or US employment.",
+        "usDerived": false
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": "000032019325000079"
+    },
+    {
+      "name": "Meta",
+      "ticker": "META",
+      "cik": "0001326801",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "sourceNote": "Annual report: consolidated cash flows and income tax note \u00b7 reviewed 2026-09-06",
+      "periodEnd": "December 31",
+      "years": [
+        {
+          "year": 2023,
+          "periodEnd": "2023-12-31",
+          "worldwideCash": 6607000000,
+          "federalCash": null,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2024,
+          "periodEnd": "2024-12-31",
+          "worldwideCash": 10554000000,
+          "federalCash": null,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2025,
+          "periodEnd": "2025-12-31",
+          "worldwideCash": 7578000000,
+          "federalCash": 4118000000,
+          "federalCurrentExpense": null
+        }
+      ],
+      "notes": "",
+      "workforce": {
+        "global": 78865,
+        "us": null,
+        "date": "2025-12-31",
+        "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+        "note": "Worldwide employees; US count not captured.",
+        "usDerived": false
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": "000162828026003942"
+    },
+    {
+      "name": "Berkshire Hathaway",
+      "ticker": "BRK.B",
+      "cik": "0001067983",
+      "source": "https://berkshirehathaway.com/2025ar/2025ar.pdf",
+      "sourceNote": "Annual report: consolidated cash flows and income tax note \u00b7 reviewed 2026-09-06",
+      "periodEnd": "December 31",
+      "years": [
+        {
+          "year": 2023,
+          "periodEnd": "2023-12-31",
+          "worldwideCash": 7765000000,
+          "federalCash": 5639000000,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2024,
+          "periodEnd": "2024-12-31",
+          "worldwideCash": 28544000000,
+          "federalCash": 26482000000,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2025,
+          "periodEnd": "2025-12-31",
+          "worldwideCash": 13978000000,
+          "federalCash": 11753000000,
+          "federalCurrentExpense": null
+        }
+      ],
+      "notes": "Consolidated group, including operating subsidiaries. Do not add subsidiary disclosures to this total. Tax note 20, printed K-99 / PDF page 125.",
+      "workforce": {
+        "global": 387800,
+        "us": 310240,
+        "date": "2025-12-31",
+        "source": "https://berkshirehathaway.com/2025ar/2025ar.pdf",
+        "note": "Approximate US count derived from 387,800 worldwide \u00d7 reported approximate 80% US share.",
+        "usDerived": true
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": null
+    },
+    {
+      "name": "Walmart",
+      "ticker": "WMT",
+      "cik": "0000104169",
+      "source": "https://stock.walmart.com/sec-filings/all-sec-filings/content/0000104169-25-000021/wmt-20250131.htm/wmtexhibit991fy2510-k.htm",
+      "sourceNote": "Annual report: consolidated cash flows and income tax note \u00b7 reviewed 2026-09-06",
+      "periodEnd": "January 31",
+      "years": [
+        {
+          "year": 2023,
+          "periodEnd": "2023-01-31",
+          "worldwideCash": 3310000000,
+          "federalCash": null,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2024,
+          "periodEnd": "2024-01-31",
+          "worldwideCash": 5879000000,
+          "federalCash": null,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2025,
+          "periodEnd": "2025-01-31",
+          "worldwideCash": 5884000000,
+          "federalCash": null,
+          "federalCurrentExpense": null
+        }
+      ],
+      "notes": "FY2025 ended January 31, 2025. Cash-flow table labels income taxes paid; refund netting is not explicit in that table.",
+      "workforce": {
+        "global": 2100000,
+        "us": 1600000,
+        "date": "2025-01-31",
+        "source": "https://stock.walmart.com/sec-filings/all-sec-filings/content/0000104169-25-000021/wmt-20250131.htm/wmtexhibit991fy2510-k.htm",
+        "note": "Approximate reported headcounts. US workforce includes part-time staff; 68% full-time.",
+        "usDerived": false
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": null
+    },
+    {
+      "name": "Tesla",
+      "ticker": "TSLA",
+      "cik": "0001318605",
+      "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+      "sourceNote": "Annual report: consolidated cash flows and income tax note \u00b7 reviewed 2026-09-06",
+      "periodEnd": "December 31",
+      "years": [
+        {
+          "year": 2023,
+          "periodEnd": "2023-12-31",
+          "worldwideCash": 1120000000,
+          "federalCash": null,
+          "federalCurrentExpense": 48000000
+        },
+        {
+          "year": 2024,
+          "periodEnd": "2024-12-31",
+          "worldwideCash": 1330000000,
+          "federalCash": null,
+          "federalCurrentExpense": 0
+        },
+        {
+          "year": 2025,
+          "periodEnd": "2025-12-31",
+          "worldwideCash": 1232000000,
+          "federalCash": 28000000,
+          "federalCurrentExpense": 0
+        }
+      ],
+      "notes": "2023 and 2024 worldwide cash values are rounded to the precision in the tax note. A zero current provision is not zero cash taxes.",
+      "workforce": {
+        "global": 134785,
+        "us": null,
+        "date": "2025-12-31",
+        "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "note": "Worldwide headcount; US count not captured.",
+        "usDerived": false
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": "000162828026003952"
+    },
+    {
+      "name": "NVIDIA",
+      "ticker": "NVDA",
+      "cik": "0001045810",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "sourceNote": "Annual report: consolidated cash flows and income tax note \u00b7 reviewed 2026-09-06",
+      "periodEnd": "January fiscal year end",
+      "years": [
+        {
+          "year": 2024,
+          "periodEnd": "2024-01-28",
+          "worldwideCash": 6549000000,
+          "federalCash": null,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2025,
+          "periodEnd": "2025-01-26",
+          "worldwideCash": 15118000000,
+          "federalCash": null,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2026,
+          "periodEnd": "2026-01-25",
+          "worldwideCash": 20288000000,
+          "federalCash": 16755000000,
+          "federalCurrentExpense": null
+        }
+      ],
+      "notes": "Fiscal 2026 ended January 25, 2026. Federal cash is captured only for FY2026; do not label it calendar 2025.",
+      "workforce": {
+        "global": 42000,
+        "us": null,
+        "date": "2026-01-25",
+        "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "note": "Worldwide employees as of FY2026 end; US count not captured.",
+        "usDerived": false
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": "000104581026000021"
+    },
+    {
+      "name": "Costco",
+      "ticker": "COST",
+      "cik": "0000909832",
+      "source": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm",
+      "sourceNote": "Annual report: consolidated cash flows and income tax note \u00b7 reviewed 2026-09-06",
+      "periodEnd": "August/September fiscal year end",
+      "years": [
+        {
+          "year": 2023,
+          "periodEnd": "2023-09-03",
+          "worldwideCash": 2234000000,
+          "federalCash": null,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2024,
+          "periodEnd": "2024-09-01",
+          "worldwideCash": 2319000000,
+          "federalCash": null,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2025,
+          "periodEnd": "2025-08-31",
+          "worldwideCash": 2917000000,
+          "federalCash": null,
+          "federalCurrentExpense": null
+        }
+      ],
+      "notes": "",
+      "workforce": {
+        "global": 341000,
+        "us": 223000,
+        "date": "2025-08-31",
+        "source": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm",
+        "note": "Reported employees by segment. Includes full-time and part-time workers. US hourly employees averaged about $32/hour at year end; this is not average annual pay for all employees.",
+        "usDerived": false,
+        "hourlyPayContext": 32
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": "000090983225000101"
+    },
+    {
+      "name": "Target",
+      "ticker": "TGT",
+      "cik": "0000027419",
+      "source": "https://corporate.target.com/investors/annual/2025-annual-report/10-k-report/10-k-part-ii/item-8-financial-statements-and-supplementary-data",
+      "sourceNote": "Annual report: consolidated cash flows and income tax note \u00b7 reviewed 2026-09-06",
+      "periodEnd": "January/February fiscal year end",
+      "years": [
+        {
+          "year": 2023,
+          "periodEnd": "2024-02-03",
+          "worldwideCash": 374000000,
+          "federalCash": null,
+          "federalCurrentExpense": 556000000
+        },
+        {
+          "year": 2024,
+          "periodEnd": "2025-02-01",
+          "worldwideCash": 1055000000,
+          "federalCash": null,
+          "federalCurrentExpense": 1013000000
+        },
+        {
+          "year": 2025,
+          "periodEnd": "2026-01-31",
+          "worldwideCash": 1091000000,
+          "federalCash": 781000000,
+          "federalCurrentExpense": 819000000
+        }
+      ],
+      "notes": "FY2025 federal payments include purchases of transferable tax credits; not all were paid directly to Treasury.",
+      "workforce": {
+        "global": 415000,
+        "us": null,
+        "date": "2026-01-31",
+        "source": "https://corporate.target.com/investors/annual/2025-annual-report/10-k-report/10-k-part-i/item-1-business",
+        "note": "Full-time, part-time and seasonal team members worldwide; US count not captured.",
+        "usDerived": false
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": null
+    },
+    {
+      "name": "JPMorgan Chase",
+      "ticker": "JPM",
+      "cik": "0000019617",
+      "source": "https://www.jpmorganchase.com/content/dam/jpmc/jpmorgan-chase-and-co/investor-relations/documents/annualreport-2025.pdf",
+      "sourceNote": "Annual report: consolidated cash flows and income tax note \u00b7 reviewed 2026-09-06",
+      "periodEnd": "December 31",
+      "years": [
+        {
+          "year": 2023,
+          "periodEnd": "2023-12-31",
+          "worldwideCash": 9908000000,
+          "federalCash": 2797000000,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2024,
+          "periodEnd": "2024-12-31",
+          "worldwideCash": 11715000000,
+          "federalCash": 3465000000,
+          "federalCurrentExpense": null
+        },
+        {
+          "year": 2025,
+          "periodEnd": "2025-12-31",
+          "worldwideCash": 5309000000,
+          "federalCash": -1099000000,
+          "federalCurrentExpense": null
+        }
+      ],
+      "notes": "Negative federal cash is a net refund, not a missing value. Consolidated income tax note 25, printed page 289 / PDF page 321.",
+      "workforce": {
+        "global": 318512,
+        "us": null,
+        "date": "2025-12-31",
+        "source": "https://www.jpmorganchase.com/content/dam/jpmc/jpmorgan-chase-and-co/investor-relations/documents/annualreport-2025.pdf",
+        "note": "Worldwide employees, annual report financial highlights; US count not captured.",
+        "usDerived": false
+      },
+      "reviewedAt": "2026-09-06",
+      "accession": null
+    }
+  ]
+}
