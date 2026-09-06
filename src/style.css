@@ -5097,11 +5097,15 @@ header nav {
   padding-bottom: 48px;
 }
 .tax-intro h1 {
-  font-size: clamp(72px, 10vw, 144px);
-  line-height: 0.91;
-  letter-spacing: -0.075em;
+  font-size: clamp(52px, 7.5vw, 108px);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
   font-weight: 500;
   margin: 30px 0;
+}
+.tax-intro h1 > span,
+.tax-intro h1 > em {
+  display: block;
 }
 .tax-intro h1 em {
   font-style: normal;
@@ -5591,9 +5595,6 @@ header nav {
 @media (max-width: 760px) {
   .tax-page {
     padding-top: 40px;
-  }
-  .tax-intro h1 {
-    font-size: 88px;
   }
   .tax-intro > p {
     font-size: 15px;

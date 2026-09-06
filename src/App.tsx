@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { ArrowUpRight, Search, Menu, X, Bookmark, Check } from "lucide-react";
 import type { Award, Data, Page } from "./data";
 
@@ -240,6 +241,7 @@ export default function App({ environment }: { environment?: Environment }) {
   return (
     <EnvironmentContext.Provider value={value}>
       <AppContent />
+      <Analytics />
     </EnvironmentContext.Provider>
   );
 }

@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
+    "@vercel/analytics": "^2.0.1",
     "express": "^5.2.1",
     "lucide-react": "^1.41.0",
     "react": "^19.2.0",

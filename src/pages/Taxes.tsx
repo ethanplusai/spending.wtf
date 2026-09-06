@@ -105,8 +105,7 @@ export default function Taxes() {
           THE REVENUE SIDE / IRS STATISTICS OF INCOME
         </div>
         <h1>
-          Who pays
-          <br />
+          <span>Who pays</span>
           <em>the bill?</em>
         </h1>
         <p>
